@@ -1,6 +1,4 @@
-import json
-
-import node
+import json, node
 
 with open("data/nodes.json") as json_file:
     json_file = json_file.read()
