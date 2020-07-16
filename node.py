@@ -14,6 +14,8 @@ class Node:
         self.id = id
         self.edges = new_edges
 
+    def get_edges_weight_from_id(self, id_node):
+        return self.edges[id_node]
 
 def decode_json_to_nodes(dct):
     """
