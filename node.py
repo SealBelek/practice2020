@@ -7,8 +7,12 @@ class Node:
         :param id: int
         :param edges: dict "id":"weight"
         """
+        new_edges = {} # str key to int key
+        for key, value in edges.items():
+            new_edges[int(key)] = value
+            
         self.id = id
-        self.edges = edges
+        self.edges = new_edges
 
 
 def decode_json_to_nodes(dct):
