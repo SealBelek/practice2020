@@ -1,3 +1,6 @@
+import datetime
+
+
 class Node:
     """
     create node for graph
@@ -5,23 +8,19 @@ class Node:
     def __init__(self, id, edges):
         """
         :param id: int
-        :param edges: dict "id":"weight"
+        :param edges: dict "id":time
         """
         new_edges = {} # str key to int key
         for key, value in edges.items():
-            new_edges[int(key)] = value
+            new_edges[int(key)] = datetime.timedelta(hours=value)
             
         self.id = id
         self.edges = new_edges
 
-    def get_edges_weight_from_id(self, id_node):
-        return self.edges[id_node]
+    def get_edge_weight_from_id(self, id_node):
+        """
 
-def decode_json_to_nodes(dct):
-    """
-    object_hook for json.loads
-    :return: Node
-    """
-    if "__complex__" in dct:
-        return Node(dct["id"], dct["edges"])
-    return dct
+        :param id_node: int
+        :return: weight: time
+        """
+        return self.edges[id_node]

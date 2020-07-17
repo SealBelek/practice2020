@@ -1,5 +1,5 @@
 
-def main(str_):
+def gui(str_):
     import sys
     from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -19,10 +19,3 @@ def main(str_):
 
     # main loop
     sys.exit(app.exec_())
-
-
-
-
-if __name__ == '__main__':
-    str_ = 'Услуга - время\nУслуга1 - Время2\nУслуга3 - Время3'
-    main(str_)

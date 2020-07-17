@@ -1,20 +1,12 @@
-import json
+from datetime import datetime
 
-import node
+import service
+import start_gui
+import mapGrapth
 
-
-def count_up_weight(path, nodes):
-    sum_weight = 0
-    for i in range(len(path) - 1):
-        sum_weight += nodes[path[i]][path[i+1]]
-    return sum_weight
-
-
-with open("data/nodes.json") as json_file:
-    json_file = json_file.read()
-    nodes = json.loads(json_file, object_hook=node.decode_json_to_nodes)
-
-nodes = {node.id:node.edges for node in nodes}
-print(nodes[1][4])
-
-print(count_up_weight([3, 4, 6], nodes))
+if __name__ == '__main__':
+    graph = mapGrapth.MapGraph(1)
+    graph.add_service(service.Service('milk', [4, 1, 2], datetime.strptime("00:00:00", '%H:%M:%S')))
+    graph.add_service(service.Service('repair', [3, 2, 1, 4], datetime.strptime("00:00:00", '%H:%M:%S')))
+    graph.add_service(service.Service('smth', [5, 6, 4], datetime.strptime("00:00:00", '%H:%M:%S')))
+    start_gui.gui("\n".join(graph.create_time_table()))
